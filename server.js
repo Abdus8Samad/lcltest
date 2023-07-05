@@ -16,16 +16,19 @@ app.get('/', (req, res) =>{
 })
 
 app.get('/ggg', (req, res) =>{
-    if(bla == ""){
-        fs.readFile('blabla.json', 'utf8', (err, data) =>{
-            if(err){
-                return res.status(500).json({error: "Can't read file"});
-            } else {
-                bla = JSON.parse(data);
-            }
-        })
-    }
-    return res.json(bla);
+    res.send("blabla");
+    // if(bla == ""){
+    //     fs.readFile('blabla.json', 'utf8', (err, data) =>{
+    //         if(err){
+    //             return res.status(500).json({error: "Can't read file"});
+    //         } else {
+    //             bla = JSON.parse(data);
+    //             return res.json(bla);
+    //         }
+    //     })
+    // } else {
+    //     return res.json(bla);
+    // }
 })
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
