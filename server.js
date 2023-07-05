@@ -3,6 +3,7 @@ app = express(),
 cors = require('cors'),
 morgan = require('morgan'),
 fs = require('fs'),
+path = require('path'),
 PORT = process.env.PORT || 8080;
 require('dotenv/config');
 
@@ -16,7 +17,17 @@ app.get('/', (req, res) =>{
 })
 
 app.get('/ggg', (req, res) =>{
-    res.send("blabla");
+    try{
+        if(bla == ""){
+            const file = path.join(process.cwd(), 'files', 'blabla.json');
+            bla = JSON.parse(fs.readFileSync(file, 'utf8'));
+        }
+        console.log(bla);
+        return res.send(bla);
+    }
+    catch {
+        return res.status(500).json({error: "Can't read file"});
+    }
     // if(bla == ""){
     //     fs.readFile('blabla.json', 'utf8', (err, data) =>{
     //         if(err){
