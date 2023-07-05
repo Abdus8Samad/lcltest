@@ -12,6 +12,10 @@ app.use(morgan('dev'));
 let bla = "";
 
 app.get('/', (req, res) =>{
+    res.send("This is the server");
+})
+
+app.get('/ggg', (req, res) =>{
     if(bla == ""){
         fs.readFile('blabla.json', 'utf8', (err, data) =>{
             if(err){
